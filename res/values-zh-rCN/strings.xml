@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">性福淘</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="tab_title_store">商城</string>
+    <string name="tab_title_category">分类</string>
+    <string name="tab_title_cart">购物车</string>
+    <string name="tab_title_forum">交流吧</string>
+    <string name="tab_title_profile">个人中心</string>
+
+</resources>

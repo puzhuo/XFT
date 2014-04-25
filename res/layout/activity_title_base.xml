@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:background="@color/global_highlight_color">
+        
+        <EditText 
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        
+        <com.pz.xingfutao.widget.ScrollTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:text="bla bla bla..." />
+        
+        <ImageView 
+            android:id="@+id/left_button"
+            android:layout_width="45dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="8dip"
+            android:paddingBottom="8dip"
+            android:src="@drawable/ic_launcher" />
+        
+        <ImageView
+            android:id="@+id/right_button"
+            android:layout_width="45dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingTop="8dip"
+            android:paddingBottom="8dip"
+            android:src="@drawable/selector_title_button_settings" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+        
+        <com.pz.xingfutao.widget.XFProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:color="@color/global_highlight_color" />
+        
+    </RelativeLayout>
+
+</LinearLayout>

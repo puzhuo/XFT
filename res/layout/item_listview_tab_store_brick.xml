@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bla bla bla...."
+        android:padding="8dip"
+        android:textSize="14sp" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        
+        <com.pz.xingfutao.widget.FitWidthImageView
+            android:id="@+id/primary_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/test"
+            android:layout_weight="1" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                
+                <com.pz.xingfutao.widget.FitWidthImageView
+                    android:id="@+id/sub_image_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/test" />
+                
+                <TextView
+                    android:id="@+id/sub_title_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="123"
+                    android:layout_alignBottom="@+id/sub_image_0" />
+                
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                
+                <com.pz.xingfutao.widget.FitWidthImageView
+                    android:id="@+id/sub_image_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/test" />
+                
+                <TextView
+                    android:id="@+id/sub_title_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="123"
+                    android:layout_alignBottom="@+id/sub_image_1" />
+                
+            </RelativeLayout>
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <com.pz.xingfutao.widget.FitWidthImageView
+                android:id="@+id/sub_image_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/test" />
+            
+            <TextView
+                android:id="@+id/sub_title_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="123"
+                android:layout_alignBottom="@+id/sub_image_4" />
+            
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <com.pz.xingfutao.widget.FitWidthImageView
+                android:id="@+id/sub_image_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/test" />
+            
+            <TextView
+                android:id="@+id/sub_title_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="123"
+                android:layout_alignBottom="@+id/sub_image_3" />
+            
+        </RelativeLayout>
+          
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+                
+            <com.pz.xingfutao.widget.FitWidthImageView
+                android:id="@+id/sub_image_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/test" />
+                
+            <TextView
+                android:id="@+id/sub_title_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="123"
+                android:layout_alignBottom="@+id/sub_image_2" />
+                    
+        </RelativeLayout>
+            
+    </LinearLayout>
+    
+
+</LinearLayout>

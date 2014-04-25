@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <!-- Application dimensions defination -->
+    <dimen name="widget_xfprogressbar_height">4dip</dimen>
+    <dimen name="widget_pullwidget_minimum_height">40dip</dimen>
+    <dimen name="widget_pullwidget_minimum_content_height">30dip</dimen>
+    
+    <dimen name="widget_scrolltextview_text_size">16sp</dimen>
+    
+</resources>
