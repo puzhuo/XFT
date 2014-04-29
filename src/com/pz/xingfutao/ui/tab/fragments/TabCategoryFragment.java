@@ -13,7 +13,6 @@ public class TabCategoryFragment extends RefreshableListViewFragment {
 	}
 	@Override
 	protected void onRefresh() {
-		// TODO Auto-generated method stub
 		
 	}
 }

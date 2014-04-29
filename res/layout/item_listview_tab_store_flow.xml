@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dip"
+    android:orientation="vertical" >
+    
+    <com.pz.xingfutao.widget.IndicatorViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+    <View
+        android:id="@+id/indicator_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/indicator"
+        android:layout_alignBottom="@+id/indicator"
+        android:layout_alignLeft="@+id/indicator"
+        android:layout_alignRight="@+id/indicator"
+        android:layout_marginLeft="-3dip"
+        android:layout_marginRight="-3dip" />
+    
+    <com.pz.xingfutao.widget.ViewPagerIndicator
+        xmlns:xingfutao="http://schemas.android.com/apk/res/com.pz.xingfutao"
+        android:id="@+id/indicator"
+        android:layout_width="50dip"
+        android:layout_height="10dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="3dip"
+        xingfutao:foregroundColor="#FFFFFF"
+        xingfutao:backgroundColor="@color/global_highlight_color"
+        xingfutao:dividerWidth="3dip" />
+
+</RelativeLayout>

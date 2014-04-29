@@ -188,8 +188,16 @@ public class PullWidget extends View{
 	}
 	
 	public void stopCirclingAndReturn(){
+		/*
 		backRunnable = new BackRunnable();
 		handler.post(backRunnable);
+		*/
+		handler.removeCallbacks(pullRunnable);
+		handler.removeCallbacks(circlingRunnable);
+		setHeight(0);
+		degree = 0;
+		isInRotateMode = false;
+		if(null != onStateChangeListener) onStateChangeListener.onCirclingFullyStop();
 	}
 	
 	public void setOnStateChangeListener(OnStateChangedListener onStateChangeListener){

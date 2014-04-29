@@ -11,4 +11,6 @@
     
     <dimen name="widget_scrolltextview_text_size">16sp</dimen>
     
+    <dimen name="global_round_corner_radius">5dip</dimen>
+    
 </resources>

@@ -2,6 +2,7 @@
 <resources>
     
     <color name="global_highlight_color">#FFEB267E</color>
+    <color name="global_highlight_dark_color">#FFBD1660</color>
     <color name="global_background_color">#FFEEEEEE</color>
     
 </resources>

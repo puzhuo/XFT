@@ -66,6 +66,18 @@
             android:name="com.pz.xingfutao.ui.sub.SettingsActivity"
             android:screenOrientation="portrait" />
         
+        <activity
+            android:name="com.pz.xingfutao.ui.sub.ItemDetailActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.pz.xingfutao.ui.sub.LoginActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.pz.xingfutao.ui.sub.SignUpActivity"
+            android:screenOrientation="portrait" />
+        
     </application>
 
 </manifest>

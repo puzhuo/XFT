@@ -6,13 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.pz.xingfutao.R;
+import com.pz.xingfutao.graphics.RoundDrawable;
 import com.pz.xingfutao.widget.ScrollTextView;
+import com.pz.xingfutao.widget.XFProgressBar;
 
 public class BaseTitleFragment extends Fragment {
 	
@@ -28,6 +31,12 @@ public class BaseTitleFragment extends Fragment {
 	private ImageView leftButton;
 	private ImageView rightButton;
 	private EditText searchBar;
+	private ImageView searchIcon;
+	
+	private XFProgressBar progressBar;
+	
+	private LinearLayout rContent;
+	private LinearLayout emptyContent;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -39,6 +48,10 @@ public class BaseTitleFragment extends Fragment {
 		leftButton = (ImageView) content.findViewById(R.id.left_button);
 		rightButton = (ImageView) content.findViewById(R.id.right_button);
 		searchBar = (EditText) content.findViewById(R.id.search_bar);
+		searchIcon = (ImageView) content.findViewById(R.id.search_icon);
+		searchBar.setBackgroundDrawable(new RoundDrawable(0xFFFFFFFF));
+		
+		progressBar = (XFProgressBar) content.findViewById(R.id.progress_bar);
 		
 		title.setClickable(true);
 		leftButton.setClickable(true);
@@ -74,11 +87,57 @@ public class BaseTitleFragment extends Fragment {
 		return content;
 	}
 	
+	@Override
+	public void onResume(){
+		super.onResume();
+		if(isContentEmpty() && emptyContent != null && rContent != null){
+			if(emptyContent.getChildCount() == 0){
+				View v = getEmptyStateView();
+				if(v != null){
+					LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+					emptyContent.addView(v, contentParams);
+				}
+				
+			}
+			
+			emptyContent.setVisibility(View.VISIBLE);
+			rContent.setVisibility(View.GONE);
+		}
+	}
+	
 	protected void setContentView(int layoutRes){
 		
-		LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+		final LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 		
-		((LinearLayout) content.findViewById(R.id.content)).addView(inflater.inflate(layoutRes, null, false), contentParams);
+		rContent = (LinearLayout) content.findViewById(R.id.content);
+		rContent.addView(inflater.inflate(layoutRes, null, false), contentParams);
+		
+		emptyContent = (LinearLayout) content.findViewById(R.id.empty_content);
+		
+		ViewTreeObserver observer = content.getViewTreeObserver();
+		observer.addOnPreDrawListener(new OnPreDrawListener(){
+
+			@Override
+			public boolean onPreDraw() {
+				if(isContentEmpty()){
+					if(emptyContent.getChildCount() == 0){
+						View v = getEmptyStateView();
+						if(v != null){
+							emptyContent.addView(v, contentParams);
+						}
+						
+					}
+					
+					emptyContent.setVisibility(View.VISIBLE);
+					rContent.setVisibility(View.GONE);
+				}else{
+					emptyContent.setVisibility(View.GONE);
+					rContent.setVisibility(View.VISIBLE);
+				}
+				return true;
+			}
+			
+		});
 	}
 	
 	protected void setMode(int mode){
@@ -87,11 +146,16 @@ public class BaseTitleFragment extends Fragment {
 		searchBar.setVisibility(View.GONE);
 		leftButton.setVisibility(View.GONE);
 		rightButton.setVisibility(View.GONE);
+		searchIcon.setVisibility(View.GONE);
 		
 		if((mode & MODE_TITLE) != 0) title.setVisibility(View.VISIBLE);
 		if((mode & MODE_LEFT_BUTTON) != 0) leftButton.setVisibility(View.VISIBLE);
 		if((mode & MODE_RIGHT_BUTTON) != 0) rightButton.setVisibility(View.VISIBLE);
-		if((mode & MODE_SEARCH_BAR) != 0) searchBar.setVisibility(View.VISIBLE);
+		if((mode & MODE_SEARCH_BAR) != 0){
+			searchBar.setVisibility(View.VISIBLE);
+			searchIcon.setVisibility(View.VISIBLE);
+		}
+		
 	}
 	
 	protected void setContentViewWithMode(int layoutRes, int mode){
@@ -117,4 +181,19 @@ public class BaseTitleFragment extends Fragment {
 	
 	protected void onClick(int id){}
 
+	protected boolean isContentEmpty(){
+		return false;
+	}
+	
+	protected View getEmptyStateView(){
+		return null;
+	}
+	
+	protected void progressBarToggle(boolean enabled){
+		if(enabled){
+			progressBar.setVisibility(View.VISIBLE);
+		}else{
+			progressBar.setVisibility(View.GONE);
+		}
+	}
 }

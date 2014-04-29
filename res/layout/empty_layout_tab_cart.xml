@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        
+        <ImageView 
+            android:id="@+id/shopping_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher"/>
+        
+        <TextView
+            android:id="@+id/quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_icon"
+            android:layout_marginTop="10dip"
+            android:layout_centerHorizontal="true"
+            android:text="@string/empty_layout_tab_cart_quote" />
+        
+        <Button 
+            android:id="@+id/go_shopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quote"
+            android:layout_marginTop="10dip"
+            android:layout_alignLeft="@+id/quote"
+            android:layout_alignRight="@+id/quote"
+            android:text="@string/empty_layout_tab_cart_go_shopping"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/selector_round_corner_orange"/>
+        
+    </RelativeLayout>
+
+</RelativeLayout>

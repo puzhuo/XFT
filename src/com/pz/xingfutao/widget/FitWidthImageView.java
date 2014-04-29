@@ -1,12 +1,14 @@
 package com.pz.xingfutao.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.pz.xingfutao.utils.PLog;
+import com.pz.xingfutao.entities.ImageMap;
+import com.pz.xingfutao.net.NetworkHandler;
 
 public class FitWidthImageView extends ImageView {
 	
@@ -15,6 +17,8 @@ public class FitWidthImageView extends ImageView {
 	
 	private int intrinsicWidth;
 	private int intrinsicHeight;
+	
+	private float scaleRate;
 
 	public FitWidthImageView(Context context){
 		this(context, null);
@@ -46,14 +50,23 @@ public class FitWidthImageView extends ImageView {
 		if(drawable != null){
 			intrinsicWidth = drawable.getIntrinsicWidth();
 			intrinsicHeight = drawable.getIntrinsicHeight();
-			PLog.d("intrinsicWidth", intrinsicWidth + "");
-			PLog.d("intrinsicHeight", intrinsicHeight + "");
 			super.setImageDrawable(drawable);
 			scaleToFit();
 		}
 	}
 	
-	/*
+	@Override
+	public void setImageResource(int resourceId){
+		super.setImageResource(resourceId);
+		
+		Drawable d = this.getDrawable();
+		intrinsicWidth = d.getIntrinsicWidth();
+		intrinsicHeight = d.getIntrinsicHeight();
+		if(d != null){
+			scaleToFit();
+		}
+	}
+	
 	@Override
 	public void setImageBitmap(Bitmap bitmap){
 		if(bitmap != null){
@@ -63,11 +76,28 @@ public class FitWidthImageView extends ImageView {
 			scaleToFit();
 		}
 	}
-	 */
+	
+	public void setNetworkImage(ImageMap image){
+		NetworkHandler.getInstance(getContext()).imageRequest(image.getImageLink(), this);
+		
+	}
+	
+	public float getScaleRate(){
+		return scaleRate;
+	}
+	
+	public int getIntrinsicWidth(){
+		return intrinsicWidth;
+	}
+	
+	public int getIntrinsicHeight(){
+		return intrinsicHeight;
+	}
 	
 	private void scaleToFit(){
 		Matrix matrix = new Matrix();
 		float rate = (float) width / (float) intrinsicWidth;
+		scaleRate = rate;
 		matrix.postScale(rate, rate);
 		setImageMatrix(matrix);
 		requestLayout();

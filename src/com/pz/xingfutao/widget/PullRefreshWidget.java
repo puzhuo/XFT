@@ -26,6 +26,8 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 	
 	private int mode = MODE_IDLE;
 	
+	private boolean circling;
+	
 	private View mHeadView;
 	private AdapterView<?> mAdapterView;
 	private ScrollView mScrollView;
@@ -223,6 +225,7 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 	
 	private void stopMovement(){
 		handler.removeCallbacks(moveRunnable);
+		handler.removeCallbacks(hideRunnable);
 		handler.removeCallbacks(headMoveRunnable);
 	}
 	
@@ -284,11 +287,12 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 			dy = event.getY();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			moveDistance = (int) (event.getY() - dy);
+			
 			switch(mode){
 			case MODE_IDLE:
+				moveDistance = (int) (event.getY() - dy);
 				PLog.d(TAG, "IDLE");
-				if(shouldRefreshStart() && mode != MODE_REFRESHING && moveDistance > 0){
+				if(shouldRefreshStart() && mode != MODE_REFRESHING && moveDistance > 0 && !circling){
 					mode = MODE_DRAGGING;
 					handler.removeCallbacks(hideRunnable);
 					handler.removeCallbacks(headMoveRunnable);
@@ -296,13 +300,15 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 				}
 			    break;
 			case MODE_DRAGGING:
+				moveDistance = (int) (event.getY() - dy);
 				if(moveDistance < 0){
 					moveDistance = 0;
 				}
 				PLog.d(TAG, "DRAGGING");
-				drag(moveDistance);
 				if(pullWidget.isExceedMaximumHeight()){
 					mode = MODE_REFRESH_START;
+				}else{
+					drag(moveDistance);
 				}
 				break;
 			case MODE_REFRESH_START:
@@ -311,12 +317,13 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 				if(null != onRefreshListener) onRefreshListener.onRefresh();
 				break;
 			case MODE_REFRESHING:
-				
+				circling = true;
 				break;
 			}
 			break;
 		case MotionEvent.ACTION_CANCEL:
 		case MotionEvent.ACTION_UP:
+			circling = false;
 			if(mode == MODE_DRAGGING) {
 				smoothHideWidget(moveDistance);
 			}

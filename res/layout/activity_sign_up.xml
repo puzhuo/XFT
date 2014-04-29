@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip"
+    android:orientation="vertical"
+    android:background="@color/global_background_color" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <TextView
+            android:id="@+id/alias"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/activity_signup_desc_alias" />
+        
+        <EditText
+            android:id="@+id/alias_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:imeActionId="@+id/account_input"
+            android:singleLine="true"
+            android:background="@null" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <TextView
+            android:id="@+id/account_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/activity_signup_desc_account" />
+        
+        <EditText
+            android:id="@+id/account_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:imeActionId="@+id/password_input"
+            android:singleLine="true"
+            android:background="@null"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <TextView
+            android:id="@+id/password_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/activity_signup_desc_password" />
+        
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:imeOptions="actionGo"
+            android:singleLine="true"
+            android:background="@null" />
+            
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dip"
+        android:text="@string/activity_signup_sign_up"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:background="@drawable/selector_round_corner_global_highlight" />
+
+</LinearLayout>

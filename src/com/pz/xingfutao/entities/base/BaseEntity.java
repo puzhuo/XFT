@@ -1,4 +1,4 @@
-package com.pz.xingfutao.entities;
+package com.pz.xingfutao.entities.base;
 
 import java.io.Serializable;
 

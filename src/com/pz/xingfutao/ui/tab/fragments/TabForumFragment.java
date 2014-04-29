@@ -1,8 +1,10 @@
 package com.pz.xingfutao.ui.tab.fragments;
 
-import com.pz.xingfutao.R;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+
+import com.pz.xingfutao.R;
 
 
 public class TabForumFragment extends RefreshableListViewFragment {
@@ -20,5 +22,4 @@ public class TabForumFragment extends RefreshableListViewFragment {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

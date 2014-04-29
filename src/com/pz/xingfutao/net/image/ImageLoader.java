@@ -14,6 +14,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+@Deprecated
 public class ImageLoader {
 	
 	private static MemoryCache memoryCache;

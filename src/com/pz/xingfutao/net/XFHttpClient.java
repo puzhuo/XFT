@@ -23,6 +23,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.pz.xingfutao.utils.PLog;
 
+@Deprecated
 public class XFHttpClient {
 	
 	public static final int CONNECTION_TIMEOUT = 5000;

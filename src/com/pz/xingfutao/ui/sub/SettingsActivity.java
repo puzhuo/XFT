@@ -3,9 +3,9 @@ package com.pz.xingfutao.ui.sub;
 import android.os.Bundle;
 
 import com.pz.xingfutao.R;
-import com.pz.xingfutao.ui.base.BaseTitleActivity;
+import com.pz.xingfutao.ui.base.BaseBackButtonActivity;
 
-public class SettingsActivity extends BaseTitleActivity{
+public class SettingsActivity extends BaseBackButtonActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){

@@ -1,6 +1,5 @@
 package com.pz.xingfutao.ui.tab;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.pz.xingfutao.R;
@@ -52,5 +52,9 @@ public class TabActivity extends FragmentActivity{
 		tabSpec.setIndicator(indicator);
 		
 		return tabSpec;
+	}
+	
+	public void switchToTab(int index){
+		tabHost.setCurrentTab(index);
 	}
 }

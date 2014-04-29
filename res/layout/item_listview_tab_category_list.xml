@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip" >
+    
+    <ImageView
+        android:id="@+id/thumb"
+        android:layout_width="85dip"
+        android:layout_height="85dip"
+        android:layout_marginRight="10dip"
+        android:src="@drawable/test" />
+    
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/thumb"
+        android:text="情趣内衣"
+        android:textSize="18sp" />
+    
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_alignBottom="@+id/thumb"
+        android:text="asdfafsdfasdfsadf"
+        android:textSize="12sp"
+        android:textColor="#555555" />
+    
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/thumb"
+        android:layout_alignBottom="@+id/thumb"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/arrow_right" />
+
+</RelativeLayout>

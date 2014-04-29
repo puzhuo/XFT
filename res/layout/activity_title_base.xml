@@ -13,7 +13,21 @@
         <EditText 
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:paddingLeft="30dip"
+            android:layout_centerInParent="true"
+            android:textSize="14sp"/>
+        
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="45dip"
+            android:layout_height="match_parent"
+            android:src="@drawable/tab_category_search"
+            android:layout_alignTop="@+id/search_bar"
+            android:layout_alignBottom="@+id/search_bar"
+            android:layout_alignLeft="@+id/search_bar" />
         
         <com.pz.xingfutao.widget.ScrollTextView
             android:id="@+id/title"
@@ -55,11 +69,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical" />
         
+        <LinearLayout
+            android:id="@+id/empty_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone" />
+        
         <com.pz.xingfutao.widget.XFProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:color="@color/global_highlight_color" />
+            android:color="@color/global_highlight_color"
+            android:visibility="gone" />
         
     </RelativeLayout>
 

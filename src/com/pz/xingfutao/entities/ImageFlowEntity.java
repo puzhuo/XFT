@@ -1,19 +1,30 @@
 package com.pz.xingfutao.entities;
 
-public class ImageFlowEntity extends BaseEntity{
+import java.util.Arrays;
+
+import com.pz.xingfutao.entities.base.BaseTabStoreEntity;
+
+public class ImageFlowEntity extends BaseTabStoreEntity{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4033186098981163794L;
 	
-	private String[] imageUrls;
+	private ImageMap[] imageUrls;
 	
-	public void setImageUrls(String[] imageUrls){
+	public void setImageUrls(ImageMap[] imageUrls){
 		this.imageUrls = imageUrls;
 	}
 	
-	public String[] getImageUrls(){
+	public ImageMap[] getImageUrls(){
 		return imageUrls;
 	}
+
+	@Override
+	public String toString() {
+		return "ImageFlowEntity [imageUrls=" + Arrays.toString(imageUrls) + "]";
+	}
+	
+	
 }

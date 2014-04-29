@@ -11,4 +11,10 @@
         <attr name="android:text" />
     </declare-styleable>
     
+    <declare-styleable name="ViewPagerIndicator">
+        <attr name="foregroundColor" format="color|reference"/>
+        <attr name="backgroundColor" format="color|reference" />
+        <attr name="dividerWidth" format="dimension|reference"/>
+    </declare-styleable>
+    
 </resources>
