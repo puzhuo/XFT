@@ -1,10 +1,9 @@
-/Users/7heaven/Documents/workspace/xingfutao/obj/local/x86/objs/render/render.o: \
- /Users/7heaven/Documents/workspace/xingfutao/jni/render.c \
+obj/local/x86/objs/render/render.o: jni/render.c \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/jni.h \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/sys/cdefs.h \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/sys/cdefs_elf.h \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/android/api-level.h \
- /Users/7heaven/Documents/workspace/xingfutao/jni/md5.h \
+ jni/md5.c jni/md5.h \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/stdio.h \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/sys/types.h \
  /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/stdint.h \
@@ -36,7 +35,9 @@
 
 /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/android/api-level.h:
 
-/Users/7heaven/Documents/workspace/xingfutao/jni/md5.h:
+jni/md5.c:
+
+jni/md5.h:
 
 /Users/7heaven/Documents/android-ndk-r9d/platforms/android-19/arch-x86/usr/include/stdio.h:
 

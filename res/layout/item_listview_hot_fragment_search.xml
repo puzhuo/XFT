@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dip"
+    android:orientation="horizontal" >
+    
+    <TextView
+        android:id="@+id/index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="8dip"
+        android:paddingRight="8dip"
+        android:paddingTop="3dip"
+        android:paddingBottom="3dip"
+        android:background="@drawable/background_round_corner_global_highlight_shadow" />
+    
+    <TextView
+        android:id="@+id/hot_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:text="阿拉啦啦" />
+    
+
+</LinearLayout>

@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.pz.xingfutao.utils.PLog;
-
 public class IndicatorViewPager extends ViewPager{
 	
 	private boolean autoScroll;
@@ -115,11 +113,9 @@ public class IndicatorViewPager extends ViewPager{
 				}
 			}
 			
-			PLog.d("fdewfe", miniHeight + "");
 			
 			if(MeasureSpec.getSize(heightMeasureSpec) < miniHeight){
 				setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), miniHeight);
-				PLog.d("asdfsadfa", "fefef");
 			}
 		}
 		

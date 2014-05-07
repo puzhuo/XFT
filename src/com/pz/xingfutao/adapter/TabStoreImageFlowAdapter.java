@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,7 @@ import com.pz.xingfutao.R;
 import com.pz.xingfutao.entities.ImageFlowEntity;
 import com.pz.xingfutao.entities.ImageMap;
 import com.pz.xingfutao.net.NetworkHandler;
-import com.pz.xingfutao.ui.sub.ItemDetailActivity;
-import com.pz.xingfutao.utils.Renderer;
+import com.pz.xingfutao.utils.FragmentUtil;
 import com.pz.xingfutao.widget.FitWidthImageView;
 
 public class TabStoreImageFlowAdapter extends PagerAdapter {
@@ -56,16 +54,11 @@ public class TabStoreImageFlowAdapter extends PagerAdapter {
 		
 		FitWidthImageView imageView = (FitWidthImageView) newInstance.findViewById(R.id.image_view);
 		NetworkHandler.getInstance(context).imageRequest(datas.getImageUrls()[position].getImageLink(), imageView);
-		//imageView.setImageResource(R.drawable.ic_launcher);
 		imageView.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v){
-				if(datas.getImageUrls()[position].getLinkType() == ImageMap.LINK_GOOD_DETAIL){
-					Intent intent = new Intent(context, ItemDetailActivity.class);
-					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					intent.putExtra("good_id", datas.getImageUrls()[position].getLink());
-					context.startActivity(intent);
-				}
+				
+				FragmentUtil.startImageMappingFragment(context, datas.getImageUrls()[position]);
 			}
 		});
 		

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.pz.xingfutao.R;
 
+@Deprecated
 public class BaseBackButtonActivity extends BaseTitleActivity {
 	
 	@Override

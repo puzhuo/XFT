@@ -13,7 +13,8 @@
     <string name="tab_title_forum">交流吧</string>
     <string name="tab_title_profile">个人中心</string>
     
-    <string name="activity_title_good_detail">商品详情</string>
+    <string name="title_good_detail">商品详情</string>
+    <string name="title_post_detail">帖子详情</string>
     
     <string name="activity_login_desc_account">帐号:</string>
     <string name="activity_login_desc_password">密码:</string>
@@ -25,13 +26,20 @@
     <string name="activity_signup_desc_password">@string/activity_login_desc_password</string>
     <string name="activity_signup_sign_up">@string/activity_login_sign_up</string>
     
-    
+    <string name="fragment_item_detail_title_desc">图文详情</string>
+    <string name="fragment_item_detail_title_comment">商品评价</string>
+    <string name="fragment_item_detail_title_params">基本参数</string>
     
     <string name="fragment_tab_profile_quote_welcome">,欢迎来到性福淘!</string>
     <string name="fragment_tab_profile_click_to_login">点击登录></string>
     <string name="fragment_tab_profile_my_order_button">我的订单</string>
     <string name="fragment_tab_profile_my_favorite_button">我的喜欢</string>
     <string name="fragment_tab_profile_system_info_button">系统信息</string>
+    
+    <string name="fragment_tab_forum_category_desc">板块分类</string>
+    <string name="fragment_tab_forum_hot_desc">热门精选</string>
+    
+    <string name="fragment_search_searchbar_hint">搜索喜欢的商品</string>
     
     <string name="empty_layout_tab_cart_quote">购物车还是空的,赶紧去逛逛吧</string>
     <string name="empty_layout_tab_cart_go_shopping">去逛逛</string>

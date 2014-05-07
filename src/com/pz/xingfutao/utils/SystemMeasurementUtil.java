@@ -54,6 +54,22 @@ public class SystemMeasurementUtil {
 		return new int[]{screenWidth, screenHeight};
 	}
 	
+	public static int getScreenWidth(Context context){
+		if(screenWidth == 0){
+			getScreenMeasurement(context);
+		}
+		
+		return screenWidth;
+	}
+	
+	public static int getScreenHeight(Context context){
+		if(screenHeight == 0){
+			getScreenMeasurement(context);
+		}
+		
+		return screenHeight;
+	}
+	
 	public static float getScreenDensity(Context context){
 		if(density == 0){
 			WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip"
+    android:background="#FFFFFF" >
+    
+    <com.pz.xingfutao.widget.FitWidthImageView
+        android:id="@+id/thumb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/test" />
+    
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thumb"
+        android:layout_marginTop="5dip"
+        android:text="asdfasdfasdfsa"
+        android:textSize="17sp" />
+    
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:text="¥9.90"
+        android:textColor="@color/global_highlight_color"
+        android:textSize="16sp" />
+    
+    <TextView
+        android:id="@+id/sold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/thumb"
+        android:layout_alignBottom="@+id/price"
+        android:text="月销量 1211"
+        android:textSize="11sp" />
+
+</RelativeLayout>

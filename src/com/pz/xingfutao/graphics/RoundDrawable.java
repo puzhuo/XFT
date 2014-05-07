@@ -9,28 +9,28 @@ import android.graphics.drawable.Drawable;
 
 public class RoundDrawable extends Drawable {
 	
-	private int left;
-	private int top;
-	private int right;
-	private int bottom;
+	protected int left;
+	protected int top;
+	protected int right;
+	protected int bottom;
 	
-	private int width;
-	private int height;
+	protected int width;
+	protected int height;
 	
-	private int centerX;
-	private int centerY;
+	protected int centerX;
+	protected int centerY;
 	
-	private RectF bound;
+	protected RectF bound;
 	
 	private int corner;
 	private int backgroundColor;
 	
-	private Paint paint;
+	protected Paint paint;
 	
 	public RoundDrawable(int color){
 		backgroundColor = color;
 		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		paint.setColor(color);
+		
 	}
 	
 	@Override
@@ -55,6 +55,7 @@ public class RoundDrawable extends Drawable {
 
 	@Override
 	public void draw(Canvas canvas) {
+		paint.setColor(backgroundColor);
 		canvas.drawRoundRect(bound, corner, corner, paint);
 	}
 

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.pz.xingfutao.R;
+import com.pz.xingfutao.ui.base.RefreshableListViewFragment;
 import com.pz.xingfutao.ui.tab.TabActivity;
 import com.pz.xingfutao.widget.AddToCart;
 

@@ -1,13 +1,13 @@
 package com.pz.xingfutao.ui.tab.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
 import com.pz.xingfutao.R;
-import com.pz.xingfutao.ui.sub.SettingsActivity;
+import com.pz.xingfutao.ui.base.BaseTitleFragment;
+import com.pz.xingfutao.ui.sub.SettingsFragment;
 
 
 
@@ -19,7 +19,12 @@ public class TabProfileFragment extends BaseTitleFragment {
 	private OnClickListener onClickListener = new OnClickListener(){
 		@Override
 		public void onClick(View v){
-			
+			switch(v.getId()){
+			case R.id.my_order:
+				break;
+			case R.id.my_favorite:
+				break;
+			}
 		}
 	};
 	
@@ -35,14 +40,16 @@ public class TabProfileFragment extends BaseTitleFragment {
 		
 		myOrder.setClickable(true);
 		myFav.setClickable(true);
+		
+		myOrder.setOnClickListener(onClickListener);
+		myFav.setOnClickListener(onClickListener);
 	}
 	
 	@Override
 	public void onClick(int id){
 		switch(id){
 		case MODE_RIGHT_BUTTON:
-			Intent intent = new Intent(getActivity(), SettingsActivity.class);
-			getActivity().startActivity(intent);
+			startFragmentWithBackEnabled(new SettingsFragment(), null);
 			break;
 		}
 	}

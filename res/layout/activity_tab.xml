@@ -3,35 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
         <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="0" />
-
-        <FrameLayout
             android:id="@+id/realtabcontent"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_above="@android:id/tabs" />
         
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_alignTop="@android:id/tabs"
             android:background="#999999"/>
 
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
             android:layout_height="45dip"
-            android:layout_weight="0"
+            android:layout_alignParentBottom="true"
             android:divider="@null"
             android:orientation="horizontal" />
-    </LinearLayout>
+        
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
+    </RelativeLayout>
 
 </android.support.v4.app.FragmentTabHost>

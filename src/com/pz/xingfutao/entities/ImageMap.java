@@ -9,10 +9,12 @@ public class ImageMap implements Serializable{
 	 */
 	private static final long serialVersionUID = -8965044049542277761L;
 
-	public static final int LINK_LIST = 0x1;
+	public static final int LINK_GOOD_LIST = 0x1;
 	public static final int LINK_ADS = 0x2;
 	public static final int LINK_GOOD_DETAIL = 0x4;
 	public static final int LINK_ARTICLE = 0x8;
+	public static final int LINK_CATEGORY_LIST = 0x10;
+	public static final int LINK_GOOD_DESC = 0x20;
 	
 	private int linkType;
 	

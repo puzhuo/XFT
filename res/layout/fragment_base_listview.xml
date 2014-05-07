@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
-            android:dividerHeight="0dip" />
+            android:dividerHeight="0dip"
+            android:listSelector="#00000000" />
         
     </com.pz.xingfutao.widget.PullRefreshWidget>
 

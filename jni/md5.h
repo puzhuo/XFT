@@ -101,6 +101,9 @@ void MD5Init (MD5_CTX *context);
 void MD5Update(MD5_CTX *context, unsigned char *input,unsigned int inputLen);
 
 void MD5Final (unsigned char digest[16], MD5_CTX *context);
+
+char* MDString(char* rawstring);
+
 static void MD5Transform  (UINT4 [4], unsigned char [64]) ;
 static void Encode(unsigned char *, UINT4 *, unsigned int);
 static void Decode (UINT4 *, unsigned char *, unsigned int);

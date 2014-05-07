@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <RadioButton 
+        android:id="@+id/confirm"
+        android:layout_width="30dip"
+        android:layout_height="match_parent" />
+    
+    <ImageView 
+        android:id="@+id/thumb"
+        android:layout_width="60dip"
+        android:layout_height="wrap_content"
+        android:src="@drawable/test"/>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dip"
+        android:gravity="center" >
+        
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textSize="14sp"
+            android:text="Allas 发生的发生的发问发噶违法" />
+        
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:text="规格:XXXXXXX"
+            android:textColor="#666666"
+            android:textSize="13sp" />
+        
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/desc"
+            android:text="数量" />
+        
+    </RelativeLayout>
+
+</LinearLayout>

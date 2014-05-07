@@ -13,6 +13,7 @@ import com.pz.xingfutao.R;
 import com.pz.xingfutao.widget.ScrollTextView;
 import com.pz.xingfutao.widget.XFProgressBar;
 
+@Deprecated
 public class BaseTitleActivity extends Activity {
 	
 	protected static final int MODE_TITLE = 0x1;

@@ -9,6 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.pz.xingfutao.entities.ItemDetailEntity;
+
 public class SearchApi extends BaseApi{
 	
 	private static final String topSearchUrl = baseUrl + "wap_search_api.php?act=wap_search_keyword";
@@ -26,15 +30,15 @@ public class SearchApi extends BaseApi{
 		return searchResultUrl + URLEncodedUtils.format(params, "UTF-8");
 	}
 	
-	public static String[] parseTopSearch(JSONObject jsonObject){
-		String[] result = null;
+	public static List<String> parseTopSearch(JSONObject jsonObject){
+		List<String> result = null;
 		
 		try{
 			if(jsonObject.getString("result").equals("success")){
 				JSONArray infoJSON = jsonObject.getJSONArray("info");
-				result = new String[infoJSON.length()];
-				for(int i = 0; i < result.length; i++){
-					result[0] = infoJSON.getJSONObject(i).getString("keyword");
+				result = new ArrayList<String>();
+				for(int i = 0; i < infoJSON.length(); i++){
+					result.add(infoJSON.getJSONObject(i).getString("keyword"));
 				}
 			}
 		}catch(JSONException e){
@@ -42,5 +46,23 @@ public class SearchApi extends BaseApi{
 		}
 		
 		return result;
+	}
+	
+	public static List<ItemDetailEntity> parseSearchResult(JSONObject jsonObject){
+		List<ItemDetailEntity> result = null;
+		
+		try{
+			if(jsonObject.getString("result").equals("success")){
+				result = new ArrayList<ItemDetailEntity>();
+				JSONArray infoJson = jsonObject.getJSONArray("info");
+				
+				result = new Gson().fromJson(infoJson.toString(), new TypeToken<List<ItemDetailEntity>>(){}.getType());
+			}
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+		
+		return result;
+		
 	}
 }

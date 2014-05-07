@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="/Users/7heaven/Documents/workspace/volley/volley.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/7heaven/Documents/workspace/volley/volley.jar" sourcepath="/Users/7heaven/Documents/workspace/volley/volley"/>
+	<classpathentry exported="true" kind="lib" path="/Users/7heaven/Documents/google-gson-2.2.4/gson-2.2.4.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>

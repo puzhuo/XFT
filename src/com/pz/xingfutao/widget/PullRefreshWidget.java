@@ -27,6 +27,7 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 	private int mode = MODE_IDLE;
 	
 	private boolean circling;
+	private boolean pullable;
 	
 	private View mHeadView;
 	private AdapterView<?> mAdapterView;
@@ -145,6 +146,8 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 		addView(mHeadView, params);
 		
 		handler = new Handler();
+		
+		pullable = true;
 	}
 	
 	@Override
@@ -152,6 +155,10 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 		super.onFinishInflate();
 		
 		initContent();
+	}
+	
+	public void setPullable(boolean pullable){
+		this.pullable = pullable;
 	}
 	
 	private void initContent(){
@@ -261,10 +268,12 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 			int mx = (int) (event.getRawX() - dx);
 			int my = (int) (event.getRawY() - dy);
 			
-			if(Math.abs(mx) < Math.abs(my)){
-				if(shouldRefreshStart() && my > 0){
-					PLog.d(TAG, "shouldRefreshStart");
-					return true;
+			if(pullable){
+				if(Math.abs(mx) < Math.abs(my)){
+					if(shouldRefreshStart() && my > 0){
+						PLog.d(TAG, "shouldRefreshStart");
+						return true;
+					}
 				}
 			}
 			break;
