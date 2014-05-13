@@ -7,6 +7,7 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,6 +23,9 @@ public class ForumApi extends BaseApi{
 	private static final String forumCategoryListUrl = baseForumUrl + "bbs/forums_api.php";
 	private static final String forumPostCommentUrl = baseForumUrl + "bbs/comment_view_api.php";
 	
+	private static final String forumPostUrl = baseForumUrl + "bbs/post_api.php";
+	private static final String forumMyPostUrl = baseForumUrl + "bbs/mypost_api.php";
+	
 	public static String getForumCategoryUrl(){
 		return forumCategoryUrl;
 	}
@@ -32,6 +36,10 @@ public class ForumApi extends BaseApi{
 	
 	public static String getPostDetailUrl(String postId){
 		return forumPostDetailUrl + "?post_id=" + postId;
+	}
+	
+	public static String getPostUrl(){
+		return forumPostUrl;
 	}
 	
 	public static String getForumCategoryListUrl(String categoryId, String type){
@@ -49,6 +57,31 @@ public class ForumApi extends BaseApi{
 		params.add(new BasicNameValuePair("end_index", endIndex));
 		
 		return forumPostCommentUrl + "?" + URLEncodedUtils.format(params, "UTF-8");
+	}
+	
+	public static String getForumMyPostUrl(int userId){
+		return forumMyPostUrl + "?user_id=" + userId;
+	}
+	
+	public static List<PostDetailEntity> parseMyPost(String response){
+		if(!response.equals("null")){
+			return new Gson().fromJson(response, new TypeToken<List<PostDetailEntity>>(){}.getType());
+		}
+		
+		return new ArrayList<PostDetailEntity>();
+	}
+	
+	public static boolean checkPost(String response){
+		try{
+			JSONObject jsonObject = new JSONObject(response);
+			if(jsonObject.has("success") && jsonObject.getInt("success") == 1){
+				return true;
+			}
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	public static List<ImageMap> parseForumCategory(String jsonString){

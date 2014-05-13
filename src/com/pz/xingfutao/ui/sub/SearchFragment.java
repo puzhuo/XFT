@@ -18,9 +18,10 @@ import com.pz.xingfutao.R;
 import com.pz.xingfutao.adapter.SearchHotWordAdapter;
 import com.pz.xingfutao.api.SearchApi;
 import com.pz.xingfutao.net.NetworkHandler;
+import com.pz.xingfutao.ui.api.KeyboardInvoke;
 import com.pz.xingfutao.ui.base.RefreshableListViewFragment;
 
-public class SearchFragment extends RefreshableListViewFragment{
+public class SearchFragment extends RefreshableListViewFragment implements KeyboardInvoke{
 	
 	private List<String> hotWords;
 	private SearchHotWordAdapter adapter;
@@ -32,6 +33,9 @@ public class SearchFragment extends RefreshableListViewFragment{
 		super.onActivityCreated(savedInstanceState);
 		
 		setMode(MODE_SEARCH_BAR | MODE_RIGHT_BUTTON | MODE_LEFT_BUTTON);
+		
+		list.setDivider(getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
+		list.setDividerHeight(1);
 		
 		getLeftButton().setImageResource(R.drawable.selector_title_button_back);
 		
@@ -55,8 +59,6 @@ public class SearchFragment extends RefreshableListViewFragment{
 				bundle.putString("search_key", key);
 				fragment.setArguments(bundle);
 				
-				inputMethodManager.hideSoftInputFromWindow(getSearchBar().getWindowToken(), 0);
-				
 				startFragmentWithBackEnabled(fragment, key);
 			}
 		});
@@ -72,12 +74,6 @@ public class SearchFragment extends RefreshableListViewFragment{
 	}
 	
 	@Override
-	public void onDestroyView(){
-		super.onDestroyView();
-		inputMethodManager.hideSoftInputFromWindow(getSearchBar().getWindowToken(), 0);
-	}
-	
-	@Override
 	protected void onClick(int id){
 		switch(id){
 		case MODE_RIGHT_BUTTON:
@@ -86,8 +82,9 @@ public class SearchFragment extends RefreshableListViewFragment{
 				ItemListFragment fragment = new ItemListFragment();
 				Bundle bundle = new Bundle();
 				bundle.putString("search_key", key);
+				fragment.setArguments(bundle);
+				
 				startFragmentWithBackEnabled(fragment, key);
-				inputMethodManager.hideSoftInputFromWindow(getSearchBar().getWindowToken(), 0);
 			}
 			break;
 		case MODE_LEFT_BUTTON:

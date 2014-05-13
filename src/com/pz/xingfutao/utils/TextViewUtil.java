@@ -15,8 +15,6 @@ import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
 import android.text.style.URLSpan;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,15 +60,12 @@ public class TextViewUtil {
 		    final int end = htmlSpanned.getSpanEnd(imageSpan);
 		    
 		    final Drawable d = context.getResources().getDrawable(R.drawable.pre_load_image);
-		    PLog.d("textWidth:" + textWidth, "d.getIntrinsicWidth():" + d.getIntrinsicWidth());
 		    d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
 		    
 		    ss.setSpan(new ImageSpan(d, DynamicDrawableSpan.ALIGN_BOTTOM), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		    
 		    NetworkHandler.getInstance(context).networkImageSpannable(imageSpan.getSource(), ss, textView, start, end);
 		}
-		
-		PLog.d("ss", ss.getSpans(0, ss.length(), ImageSpan.class).toString());
 		
 		Pattern pattern = Pattern.compile(IMG_PATTERN  + "|" + I_PATTERN + "|" + LINK_PATTERN + "|" + EMO_PATTERN);
 		Matcher matcher = pattern.matcher(formatContent);

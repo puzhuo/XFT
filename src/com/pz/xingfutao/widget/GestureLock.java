@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -207,12 +206,18 @@ public class GestureLock extends RelativeLayout{
 				
 				if(gesturesContainer[0] != -1){
 					boolean matched = false;
-					for(int j = 0; j < defaultGestures.length; j++){
-						if(gesturesContainer[j] == defaultGestures[j]){
-							matched = true;
+					for(int j = 0; j < gesturesContainer.length; j++){
+						if(j < defaultGestures.length){
+							if(gesturesContainer[j] == defaultGestures[j]){
+								matched = true;
+							}else{
+								matched = false;
+								break;
+							}
 						}else{
-							matched = false;
-							break;
+							if(gesturesContainer[j] != -1){
+								matched = false;
+							}
 						}
 					}
 					
@@ -231,7 +236,6 @@ public class GestureLock extends RelativeLayout{
 										int dy = nextChild.getTop() - selectedChild.getTop();
 										
 										int angle = (int) Math.toDegrees(Math.atan2(dy, dx)) + 90;
-										Log.d(angle + "", "angle");
 										((GestureLockView) selectedChild).setArrow(angle);
 									}
 								}

@@ -21,4 +21,20 @@
         
     </string-array>
     
+    <string-array name="settings_titles">
+        
+        <item>版本更新->已经是最新版本</item>
+        <item>divider</item>
+        <item>清空图片缓存</item>
+        <item>清空历史数据</item>
+        <item>divider</item>
+        <item>关注我们的微博</item>
+        <item>关于我们</item>
+        <item>divider</item>
+        <item>你可能喜欢的应用</item>
+        <item>divider_</item>
+        <item>center:退出当前账号_</item>
+        
+    </string-array>
+    
 </resources>

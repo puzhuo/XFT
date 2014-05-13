@@ -1,11 +1,14 @@
 package com.pz.xingfutao.utils;
 
-import android.content.Context;
+import com.pz.xingfutao.XFApplication;
+import com.pz.xingfutao.dao.XFSharedPreference;
+
 
 public class LoginUtil {
 	
-	public static boolean verify(Context context){
-		
-		return false;
+	public static boolean checkLogin(){
+		String v = XFSharedPreference.getInstance(XFApplication.getInstance()).getSession();
+		return v != null && v != "";
 	}
+	
 }

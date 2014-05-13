@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -17,7 +18,12 @@ import com.pz.xingfutao.entities.ImageMap;
 import com.pz.xingfutao.entities.PostDetailEntity;
 import com.pz.xingfutao.net.NetworkHandler;
 import com.pz.xingfutao.ui.base.RefreshableListViewFragment;
+import com.pz.xingfutao.ui.sub.MyPostFragment;
+import com.pz.xingfutao.ui.sub.MyPrivateListFragment;
 import com.pz.xingfutao.ui.sub.PostDetailFragment;
+import com.pz.xingfutao.ui.sub.PostFragment;
+import com.pz.xingfutao.view.PopupWindowDispatcher;
+import com.pz.xingfutao.view.TitleClickListener;
 
 
 public class TabForumFragment extends RefreshableListViewFragment {
@@ -30,8 +36,9 @@ public class TabForumFragment extends RefreshableListViewFragment {
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
 		
-		setMode(MODE_TITLE | MODE_LEFT_BUTTON);
+		setMode(MODE_TITLE | MODE_LEFT_BUTTON | MODE_RIGHT_BUTTON);
 		getLeftButton().setImageResource(R.drawable.selector_title_button_menu);
+		getRightButton().setImageResource(R.drawable.selector_title_button_edit);
 		
 		categoryList = new ArrayList<ImageMap>();
 		hotPosts = new ArrayList<PostDetailEntity>();
@@ -95,8 +102,23 @@ public class TabForumFragment extends RefreshableListViewFragment {
 	protected void onClick(int id){
 		switch(id){
 		case MODE_LEFT_BUTTON:
-			//startFragmentWithBackEnabled(new PostDetailFragment(), getString(R.string.title_post_detail));
+			PopupWindowDispatcher.getInstance(getActivity()).popupTitle(getLeftButton(), new TitleClickListener(new int[]{R.drawable.ic_launcher, R.drawable.ic_launcher},
+					                                                                                            new String[]{"我的帖子", "我的私信"}){
+				@Override
+				public void onClick(int position){
+					switch(position){
+					case 0:
+						startFragmentWithBackEnabled(new MyPostFragment(), "");
+						break;
+					case 1:
+						startFragmentWithBackEnabled(new MyPrivateListFragment(), "");
+						break;
+					}
+				}
+			}, Gravity.TOP | Gravity.LEFT);
 			break;
+		case MODE_RIGHT_BUTTON:
+			startFragmentWithBackEnabled(new PostFragment(), "");
 		}
 	}
 }

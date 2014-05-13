@@ -18,20 +18,22 @@ public class FragmentUtil {
 	
 	static{
 		fragmentMap = new SparseArray<String>();
-		fragmentMap.put(ImageMap.LINK_ADS, "com.pz.xingfutao.ui.sub.AdsFragment");
 		fragmentMap.put(ImageMap.LINK_ARTICLE, "com.pz.xingfutao.ui.sub.ArticleFragment");
 		fragmentMap.put(ImageMap.LINK_GOOD_DETAIL, "com.pz.xingfutao.ui.sub.ItemDetailFragment");
 		fragmentMap.put(ImageMap.LINK_GOOD_LIST, "com.pz.xingfutao.ui.sub.ItemListFragment");
 		fragmentMap.put(ImageMap.LINK_CATEGORY_LIST, "com.pz.xingfutao.ui.sub.PostListFragment");
 		fragmentMap.put(ImageMap.LINK_GOOD_DESC, "com.pz.xingfutao.ui.sub.ArticleFragment");
+		fragmentMap.put(ImageMap.LINK_URL_GOOD_LIST, "com.pz.xingfutao.ui.sub.ItemListFragment");
+		fragmentMap.put(ImageMap.LINK_SEARCH_LIST, "com.pz.xingfutao.ui.sub.ItemListFragment");
 		
 		bundleMap = new SparseArray<String>();
-		bundleMap.put(ImageMap.LINK_ADS, "ads_image_url");
-		bundleMap.put(ImageMap.LINK_ARTICLE, "article_url");
+		bundleMap.put(ImageMap.LINK_ARTICLE, "content");
 		bundleMap.put(ImageMap.LINK_GOOD_DETAIL, "good_id");
 		bundleMap.put(ImageMap.LINK_GOOD_LIST, "item_list_api");
 		bundleMap.put(ImageMap.LINK_CATEGORY_LIST, "category_id");
 		bundleMap.put(ImageMap.LINK_GOOD_DESC, "content");
+		bundleMap.put(ImageMap.LINK_URL_GOOD_LIST, "url_list");
+		bundleMap.put(ImageMap.LINK_SEARCH_LIST, "search_key");
 	}
 
 	@Deprecated
@@ -56,7 +58,7 @@ public class FragmentUtil {
 	}
 	
 	public static void startImageMappingFragment(Context context, ImageMap imageMap){
-		if(context instanceof TabActivity){
+		if(context instanceof TabActivity && imageMap != null && imageMap.getLink() != null && imageMap.getLinkType() != 0){
 			Fragment fragment = ((TabActivity) context).getLastFragment();
 			if(fragment instanceof BaseTitleFragment){
 				try {
@@ -79,5 +81,25 @@ public class FragmentUtil {
 				}
 			}
 		}
+	}
+	
+	public static BaseTitleFragment getPendingFragment(BaseTitleFragment host){
+		BaseTitleFragment result = null;
+		if(host.getArguments() != null && host.getArguments().containsKey("fragment_class")){
+			try {
+				Class<?> clazz = Class.forName((String) host.getArguments().getString("fragment_class"));
+				try {
+					result = (BaseTitleFragment) clazz.newInstance();
+				} catch (java.lang.InstantiationException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
 	}
 }

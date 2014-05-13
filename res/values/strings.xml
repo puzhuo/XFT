@@ -6,6 +6,8 @@
     <string name="hello_world">Hello world!</string>
     
     <string name="refreshing">正在刷新&#8230;</string>
+    <string name="loging">正在登录&#8230;</string>
+    <string name="signing">正在注册&#8230;</string>
     
     <string name="tab_title_store">商城</string>
     <string name="tab_title_category">分类</string>
@@ -15,6 +17,22 @@
     
     <string name="title_good_detail">商品详情</string>
     <string name="title_post_detail">帖子详情</string>
+    <string name="title_settings">设置</string>
+    <string name="title_my_fav">我的喜欢</string>
+    <string name="title_my_order">我的订单</string>
+    <string name="title_feedback">意见反馈</string>
+    <string name="title_privacy">隐私保护</string>
+    <string name="title_help">使用帮助</string>
+    <string name="title_login">登录</string>
+    <string name="title_signup">注册</string>
+    <string name="title_about">关于我们</string>
+    <string name="title_settle">结算</string>
+    <string name="title_address_edit">编辑地址</string>
+    <string name="title_private_message">私信</string>
+    <string name="title_my_post">我的帖子</string>
+    <string name="title_post">发帖</string>
+    
+    <string name="activity_tab_click_again_to_quit">再点击一次退出</string>
     
     <string name="activity_login_desc_account">帐号:</string>
     <string name="activity_login_desc_password">密码:</string>
@@ -24,25 +42,67 @@
     <string name="activity_signup_desc_alias">昵称:</string>
     <string name="activity_signup_desc_account">@string/activity_login_desc_account</string>
     <string name="activity_signup_desc_password">@string/activity_login_desc_password</string>
+    <string name="activity_signup_desc_password_confirm">确认密码:</string>
+    <string name="activity_signup_desc_email">邮箱:</string>
+    <string name="activity_signup_desc_phone">手机:</string>
     <string name="activity_signup_sign_up">@string/activity_login_sign_up</string>
     
     <string name="fragment_item_detail_title_desc">图文详情</string>
     <string name="fragment_item_detail_title_comment">商品评价</string>
     <string name="fragment_item_detail_title_params">基本参数</string>
+    <string name="fragment_item_detail_add_fav_success">收藏成功</string>
+    <string name="fragment_item_detail_del_fav_success">已取消收藏</string>
+    
+    <string name="fragment_settings_confirm_wipe_image">确定清空</string>
+    <string name="fragment_settings_confirm_wipe_history">@string/fragment_settings_confirm_wipe_image</string>
+    <string name="fragment_settings_confirm_exit">退出当前账号</string>
+    <string name="fragment_settings_confirm_exit_desc">确认退出当前账号？退出后，将无法进行查看订单，发帖，评论等操作！</string>
+    <string name="fragment_settings_cancel">取消</string>
     
     <string name="fragment_tab_profile_quote_welcome">,欢迎来到性福淘!</string>
     <string name="fragment_tab_profile_click_to_login">点击登录></string>
     <string name="fragment_tab_profile_my_order_button">我的订单</string>
     <string name="fragment_tab_profile_my_favorite_button">我的喜欢</string>
     <string name="fragment_tab_profile_system_info_button">系统信息</string>
+    <string name="fragment_tab_profile_hi">你好</string>
+    <string name="fragment_tab_profile_service_number">4008&#8211;800&#8211;123</string>
+    <string name="fragment_tab_profile_service_desc">周一至周日 9:00&#8211;18:00</string>
+    <string name="fragment_tab_profile_feedback">意见反馈</string>
+    <string name="fragment_tab_profile_privacy_protection">隐私保护</string>
+    <string name="fragment_tab_profile_service_call_confirm">拨打</string>
+    <string name="fragment_tab_profile_service_call_quote">是否拨打客服热线</string>
+    <string name="fragment_tab_profile_common_cancel">@string/fragment_settings_cancel</string>
     
     <string name="fragment_tab_forum_category_desc">板块分类</string>
     <string name="fragment_tab_forum_hot_desc">热门精选</string>
     
+    <string name="fragment_tab_cart_count">数量：</string>
+    <string name="fragment_tab_cart_unit_price">单价：</string>
+    <string name="fragment_tab_cart_settle">结算</string>
+    <string name="fragment_tab_cart_delete">删除</string>
+    
     <string name="fragment_search_searchbar_hint">搜索喜欢的商品</string>
+    
+    <string name="fragment_login_quote_user_name_null">要记得填写用户名，亲</string>
+    <string name="fragment_login_quote_password_null">密码呢？</string>
+    <string name="fragment_login_quote_login_success">登陆成功</string>
+    <string name="fragment_login_quote_login_failure">用户名或者密码填错了</string>
+    
+    <string name="fragment_signup_quote_user_name_null">@string/fragment_login_quote_user_name_null</string>
+    <string name="fragment_signup_quote_password_null">@string/fragment_login_quote_password_null</string>
+    <string name="fragment_signup_quote_confirm_password_null">确认密码不能为空哦</string>
+    <string name="fragment_signup_quote_email_null">填写邮箱忘记密码的时候才能找回哦</string>
+    <string name="fragment_signup_quote_phone_null">手机号码也是需要的，亲</string>
+    <string name="fragment_signup_quote_signup_success">注册成功</string>
+    <string name="fragment_signup_quote_password_not_match">两次输入密码不相同</string>
+    
+    <string name="fragment_common_error">网络似乎有点不给力&#8230;</string>
+    <string name="fragment_common_empty">什么都没有</string>
     
     <string name="empty_layout_tab_cart_quote">购物车还是空的,赶紧去逛逛吧</string>
     <string name="empty_layout_tab_cart_go_shopping">去逛逛</string>
+    <string name="empty_layout_my_fav_quote">还没有收藏的物品，赶紧去逛逛吧</string>
+    <string name="empty_layout_my_fav_go_shopping">@string/empty_layout_tab_cart_go_shopping</string>
     <string name="empty_layout_global_loading_loading">正在加载&#8230;</string>
 
 </resources>

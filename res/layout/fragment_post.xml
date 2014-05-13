@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip"
+    android:orientation="vertical"
+    android:background="@color/global_background_color" >
+    
+    <EditText
+        android:id="@+id/post_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:imeActionId="@+id/edit"
+        android:hint="标题"
+        android:textSize="14sp"
+        android:background="@drawable/background_round_corner_white_shadow" />
+        
+
+    <EditText 
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dip"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:hint="帖子内容"
+        android:textSize="14sp"
+        android:background="@drawable/background_round_corner_white_shadow"/>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dip"
+        android:gravity="center">
+        
+        <CheckBox
+            android:id="@+id/anonymous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="匿名发布"
+            android:textSize="13sp" />
+        
+        <Button 
+            android:id="@+id/emoji_switcher"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_title_button_edit"/>
+        
+    </RelativeLayout>
+    
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.pz.xingfutao.ui.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,25 +9,41 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
 import com.pz.xingfutao.R;
 import com.pz.xingfutao.graphics.RoundDrawable;
+import com.pz.xingfutao.ui.api.KeyboardInvoke;
+import com.pz.xingfutao.ui.api.RequireLogin;
+import com.pz.xingfutao.ui.sub.LoginFragment;
 import com.pz.xingfutao.ui.tab.TabActivity;
+import com.pz.xingfutao.utils.LoginUtil;
+import com.pz.xingfutao.utils.PLog;
 import com.pz.xingfutao.view.SwipeBackListener;
 import com.pz.xingfutao.widget.ScrollTextView;
 import com.pz.xingfutao.widget.XFProgressBar;
+import com.pz.xingfutao.widget.XFToast;
 
+/**
+ * avoid using view id with content or view instance name with content
+ * @author 7heaven
+ *
+ */
 public class BaseTitleFragment extends Fragment {
 	
 	protected static final int MODE_TITLE = 0x1;
 	protected static final int MODE_LEFT_BUTTON = 0x2;
 	protected static final int MODE_RIGHT_BUTTON = 0x4;
 	protected static final int MODE_SEARCH_BAR = 0x8;
+	
+	private int mode;
 	
 	protected View content;
 	private LayoutInflater inflater;
@@ -42,7 +59,7 @@ public class BaseTitleFragment extends Fragment {
 	private ImageView searchIcon;
 	
 	private XFProgressBar progressBar;
-	private LinearLayout loadingLayout;
+	private RelativeLayout loadingLayout;
 	
 	private LinearLayout rContent;
 	private LinearLayout emptyContent;
@@ -58,10 +75,22 @@ public class BaseTitleFragment extends Fragment {
 			onExtraErrorHandle(error);
 			if(shallShowErrorPage() && getErrorStateView() != null && emptyContent != null && rContent != null){
 				contentTrans();
+				if(!isContentEmpty()){
+					XFToast.showTextShort(R.string.fragment_common_error);
+				}
 			}
 		}
 		
 	};
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		
+		if(this instanceof KeyboardInvoke){
+			getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+		}
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -84,7 +113,7 @@ public class BaseTitleFragment extends Fragment {
 		searchBar.setBackgroundDrawable(new RoundDrawable(0xFFFFFFFF));
 		
 		progressBar = (XFProgressBar) content.findViewById(R.id.progress_bar);
-		loadingLayout = (LinearLayout) content.findViewById(R.id.loading);
+		loadingLayout = (RelativeLayout) content.findViewById(R.id.loading);
 		
 		title.setClickable(true);
 		leftButton.setClickable(true);
@@ -127,6 +156,17 @@ public class BaseTitleFragment extends Fragment {
 	@Override
 	public void onResume(){
 		super.onResume();
+		if(getArguments() != null && getArguments().containsKey("extra_back_button")){
+			PLog.d("back_button", "back_button");
+			setMode(getMode() | MODE_LEFT_BUTTON);
+			getLeftButton().setImageResource(R.drawable.selector_title_button_back);
+			getLeftButton().setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v){
+					dismiss();
+				}
+			});
+		}
 		contentTrans();
 	}
 	
@@ -151,9 +191,21 @@ public class BaseTitleFragment extends Fragment {
 		
 		rContent = (LinearLayout) content.findViewById(R.id.content);
 		rContent.addView(inflater.inflate(layoutRes, null, false), contentParams);
+		rContent.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v){}
+		});
 		
 		emptyContent = (LinearLayout) content.findViewById(R.id.empty_content);
+		emptyContent.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v){}
+		});
 		errorContent = (LinearLayout) content.findViewById(R.id.error_content);
+		errorContent.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v){}
+		});
 		
 		if(getEmptyStateView() != null) emptyContent.addView(getEmptyStateView(), contentParams);
 		if(getErrorStateView() != null && shallShowErrorPage()) errorContent.addView(getErrorStateView(), contentParams);
@@ -188,6 +240,7 @@ public class BaseTitleFragment extends Fragment {
 	}
 	
 	protected void setMode(int mode){
+		this.mode = mode;
 		
 		title.setVisibility(View.GONE);
 		searchBar.setVisibility(View.GONE);
@@ -203,6 +256,10 @@ public class BaseTitleFragment extends Fragment {
 			searchIcon.setVisibility(View.VISIBLE);
 		}
 		
+	}
+	
+	protected int getMode(){
+		return mode;
 	}
 	
 	protected void setContentViewWithMode(int layoutRes, int mode){
@@ -265,14 +322,36 @@ public class BaseTitleFragment extends Fragment {
 				loadingLayout.setVisibility(View.VISIBLE);
 			}else{
 				progressBar.setVisibility(View.VISIBLE);
+				if(getTitleUpperText() != null) getTitleView().setUpperText(getTitleUpperText());
 			}
 		}else{
+			getTitleView().backward();
 			progressBar.setVisibility(View.GONE);
 			loadingLayout.setVisibility(View.GONE);
 		}
 	}
 	
 	public void startFragmentWithBackEnabled(BaseTitleFragment fragment, String tag){
+		Fragment f = ((TabActivity) getActivity()).getLastFragment();
+		if(f != null && f.getView() != null && f.getView().getAnimation() != null && f.getView().getAnimation().hasStarted()){
+			return;
+		}
+		if(((TabActivity) getActivity()).getLastFragment() instanceof KeyboardInvoke){
+			InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+			inputMethodManager.hideSoftInputFromWindow(getSearchBar().getWindowToken(), 0);
+		}
+		
+		if(fragment instanceof RequireLogin && !LoginUtil.checkLogin()){
+			Bundle bundle = fragment.getArguments();
+			if(bundle == null) bundle = new Bundle();
+			bundle.putString("fragment_class", fragment.getClass().getName());
+			PLog.d("fragment", fragment.getClass().getName());
+			if(tag != null) bundle.putString("tag", tag);
+			
+			fragment = new LoginFragment();
+			fragment.setArguments(bundle);
+		}
+		
 		fragment.interceptBackButton(true);
 		fragment.enableSwipeGesture(true);
 		getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fragment_slide_right_enter,
@@ -286,8 +365,9 @@ public class BaseTitleFragment extends Fragment {
 		((TabActivity) getActivity()).addFragmentToBackStack(fragment);
 	}
 	
-	protected void dismiss(){
-		((TabActivity) getActivity()).removeFragment(this);
+	public void dismiss(){
+		
+		if(getActivity() != null) ((TabActivity) getActivity()).removeFragment(this);
 	}
 	
 	protected abstract class ArgExec{
@@ -316,5 +396,9 @@ public class BaseTitleFragment extends Fragment {
 	public void setErrorState(boolean error){
 		errorOccur = error;
 		contentTrans();
+	}
+	
+	protected String getTitleUpperText(){
+		return null;
 	}
 }

@@ -23,6 +23,7 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 	private static final int MODE_IDLE = 1;
 	private static final int MODE_DRAGGING = 2;
 	private static final int MODE_REFRESH_START = 3;
+	private static final int MODE_STOP = 4;
 	
 	private int mode = MODE_IDLE;
 	
@@ -252,7 +253,7 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 	
 	public void onRefreshComplete(){
 		pullWidget.stopCirclingAndReturn();
-		mode = MODE_IDLE;
+		mode = MODE_STOP;
 		moveDistance = 0;
 	}
 	
@@ -263,6 +264,8 @@ public class PullRefreshWidget extends LinearLayout implements OnStateChangedLis
 		case MotionEvent.ACTION_DOWN:
 			dx = event.getRawX();
 			dy = event.getRawY();
+			mode = MODE_IDLE;
+			stopMovement();
 			break;
 		case MotionEvent.ACTION_MOVE:
 			int mx = (int) (event.getRawX() - dx);

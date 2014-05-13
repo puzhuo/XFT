@@ -3,8 +3,6 @@ package com.pz.xingfutao.ui.tab.fragments;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONObject;
-
 import android.os.Bundle;
 
 import com.android.volley.Request.Method;
@@ -16,6 +14,7 @@ import com.pz.xingfutao.entities.base.BaseTabStoreEntity;
 import com.pz.xingfutao.net.NetworkHandler;
 import com.pz.xingfutao.ui.base.RefreshableListViewFragment;
 import com.pz.xingfutao.ui.sub.SearchFragment;
+import com.pz.xingfutao.utils.PLog;
 
 
 public class TabStoreFragment extends RefreshableListViewFragment{
@@ -33,13 +32,14 @@ public class TabStoreFragment extends RefreshableListViewFragment{
 		adapter = new TabStoreAdapter(getActivity(), datas);
 		
 		list.setAdapter(adapter);
-		
-		NetworkHandler.getInstance(getActivity()).jsonRequest(Method.POST, ContentApi.getStoreContentUrl(), new Listener<JSONObject>(){
+		NetworkHandler.getInstance(getActivity()).stringRequest(Method.POST, ContentApi.getStoreContentUrl(), new Listener<String>(){
 
 			@Override
-			public void onResponse(JSONObject jsonObject) {
+			public void onResponse(String response) {
 				
-                List<BaseTabStoreEntity> jsonResultList = ContentApi.parseStoreContent(jsonObject);
+				PLog.d("json", response);
+				
+                List<BaseTabStoreEntity> jsonResultList = ContentApi.parseStoreContent(response);
 				if(jsonResultList != null){
 					
 					datas.clear();
@@ -58,13 +58,12 @@ public class TabStoreFragment extends RefreshableListViewFragment{
 
 	@Override
 	protected void onRefresh() {
-		getTitleView().setUpperText(getString(R.string.refreshing));
-		NetworkHandler.getInstance(getActivity()).jsonRequest(Method.POST, ContentApi.getStoreContentUrl(), new Listener<JSONObject>(){
+		NetworkHandler.getInstance(getActivity()).stringRequest(Method.POST, ContentApi.getStoreContentUrl(), new Listener<String>(){
 
 			@Override
-			public void onResponse(JSONObject jsonObject) {
+			public void onResponse(String response) {
 				
-				List<BaseTabStoreEntity> jsonResultList = ContentApi.parseStoreContent(jsonObject);
+				List<BaseTabStoreEntity> jsonResultList = ContentApi.parseStoreContent(response);
 				if(jsonResultList != null){
 					datas.clear();
 				    datas.addAll(jsonResultList);
@@ -73,19 +72,13 @@ public class TabStoreFragment extends RefreshableListViewFragment{
 				}
 				
 				
+				onRefreshComplete();
+				list.smoothScrollToPosition(0);
 			}
 			
 		}, this);
 		
-		onRefreshComplete();
-		getTitleView().backward();
-		list.smoothScrollToPosition(0);
-	}
-	
-	@Override
-	protected boolean isContentEmpty(){
-		//return datas.size() <= 0;
-		return super.isContentEmpty();
+		
 	}
 	
 	@Override

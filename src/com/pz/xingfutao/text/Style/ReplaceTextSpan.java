@@ -1,4 +1,4 @@
-package com.pz.xingfutao.text.Style;
+package com.pz.xingfutao.text.style;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

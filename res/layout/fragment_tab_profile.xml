@@ -84,24 +84,156 @@
                 android:gravity="center" >
 
                 <TextView
+                    android:id="@+id/welcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_above="@+id/click_to_login"
                     android:gravity="center"
                     android:text="@string/fragment_tab_profile_quote_welcome"
-                    android:textColor="#666666" />
+                    android:textColor="#666666"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/click_to_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:layout_marginTop="3dip"
                     android:gravity="center"
                     android:text="@string/fragment_tab_profile_click_to_login"
-                    android:textColor="#666666" />
+                    android:textColor="#666666"
+                    android:textSize="16sp" />
             </RelativeLayout>
         </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/service_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dip"
+            android:background="@drawable/selector_settings">
+            
+            <ImageView
+                android:id="@+id/service_call_icon"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="5dip"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_phone" />
+            
+            <TextView 
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/service_call_icon"
+                android:text="@string/fragment_tab_profile_service_number"
+                android:textSize="15sp"
+                android:textColor="@drawable/common_text_color" />
+            
+            <TextView
+                android:id="@+id/service_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/service_call_icon"
+                android:layout_below="@+id/number"
+                android:text="@string/fragment_tab_profile_service_desc" 
+                android:textSize="13sp"
+                android:textColor="@drawable/common_text_color"/>
+            
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="15dip"
+                android:layout_height="15dip"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/arrow_right" />
+            
+        </RelativeLayout>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#AAAAAA" />
+        
+        <RelativeLayout
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dip"
+            android:background="@drawable/selector_settings">
+            
+            <ImageView
+                android:id="@+id/feedback_icon"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="5dip"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_phone" />
+            
+            <TextView 
+                android:id="@+id/feedback_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/feedback_icon"
+                android:text="@string/fragment_tab_profile_feedback"
+                android:textSize="15sp"
+                android:textColor="@drawable/common_text_color" />
+            
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="15dip"
+                android:layout_height="15dip"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/arrow_right" />
+            
+        </RelativeLayout>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#AAAAAA" />
+        
+        <RelativeLayout
+            android:id="@+id/privacy_protection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dip"
+            android:background="@drawable/selector_settings">
+            
+            <ImageView
+                android:id="@+id/privacy_icon"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="5dip"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_phone" />
+            
+            <TextView 
+                android:id="@+id/privacy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/privacy_icon"
+                android:text="@string/fragment_tab_profile_privacy_protection"
+                android:textSize="15sp"
+                android:textColor="@drawable/common_text_color" />
+            
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="15dip"
+                android:layout_height="15dip"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/arrow_right" />
+            
+        </RelativeLayout>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#AAAAAA" />
+        
     </LinearLayout>
 
 </ScrollView>

@@ -5,10 +5,10 @@
     android:padding="10dip"
     android:background="#FFFFFF" >
     
-    <com.pz.xingfutao.widget.FitWidthImageView
+    <ImageView
         android:id="@+id/thumb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dip"
         android:src="@drawable/test" />
     
     <TextView
@@ -17,6 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/thumb"
         android:layout_marginTop="5dip"
+        android:minLines="2"
+        android:maxLines="2"
         android:text="asdfasdfasdfsa"
         android:textSize="17sp" />
     

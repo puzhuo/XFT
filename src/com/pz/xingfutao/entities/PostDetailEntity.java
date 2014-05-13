@@ -43,6 +43,17 @@ public class PostDetailEntity extends BaseEntity {
 	@SerializedName("post_id")
 	private String postId;
 	
+	@Expose
+	@SerializedName("content_brief")
+	private String contentBrief;
+	
+	public String getContentBrief(){
+		return contentBrief;
+	}
+	
+	public void setContentBrief(String contentBrief){
+		this.contentBrief = contentBrief;
+	}
 	
 	public String getTitle() {
 		return title;
@@ -112,7 +123,8 @@ public class PostDetailEntity extends BaseEntity {
 				+ ", userName=" + userName + ", userId=" + userId
 				+ ", userAvatar=" + userAvatar + ", gender=" + gender
 				+ ", content=" + content + ", commentCount=" + commentCount
-				+ ", imageThumb=" + imageThumb + ", postId=" + postId + "]";
+				+ ", imageThumb=" + imageThumb + ", postId=" + postId
+				+ ", contentBrief=" + contentBrief + "]";
 	}
 	
 }

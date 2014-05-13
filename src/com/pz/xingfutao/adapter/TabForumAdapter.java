@@ -71,67 +71,69 @@ public class TabForumAdapter extends BaseAdapter{
 			if(convertView == null){
 				convertView = inflater.inflate(R.layout.item_listview_tab_forum_category, null, false);
 				
-			}
-			
-			LinearLayout row = null;
-			
-			if(categoryList != null && categoryList.size() > 0 && ((ViewGroup) convertView.findViewById(R.id.category_section)).getChildCount() < categoryList.size()){
-				((ViewGroup) convertView.findViewById(R.id.category_section)).removeAllViewsInLayout();
 				
-				for(int i = 0; i < categoryList.size(); i++){
-					if(i % NUM_COLUMN == 0){
-						LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-						rowParams.weight = 1F;
-						
-						LinearLayout tRow = new LinearLayout(context);
-						tRow.setOrientation(LinearLayout.HORIZONTAL);
-						
-						View h = new View(context);
-						h.setBackgroundDrawable(context.getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
-						
-						LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
-						
-						((ViewGroup) convertView.findViewById(R.id.category_section)).addView(h, dividerParams);
-						((ViewGroup) convertView.findViewById(R.id.category_section)).addView(tRow, rowParams);
-						
-						row = tRow;
-					}
+				LinearLayout row = null;
+				
+				if(categoryList != null && categoryList.size() > 0 && ((ViewGroup) convertView.findViewById(R.id.category_section)).getChildCount() < categoryList.size()){
+					((ViewGroup) convertView.findViewById(R.id.category_section)).removeAllViewsInLayout();
 					
-					if(row != null){
-						LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-						lineParams.weight = 1F;
-						
-						View child = inflater.inflate(R.layout.item_listview_tab_forum_category_single, null, false);
-						final int ii = i;
-						child.setOnClickListener(new OnClickListener(){
-							@Override
-							public void onClick(View v){
-								FragmentUtil.startImageMappingFragment(context, categoryList.get(ii));
-							}
-						});
-						
-						NetworkHandler.getInstance(context).imageRequest(categoryList.get(i).getImageLink(), (ImageView) child.findViewById(R.id.cat_thumb));
-						((TextView) child.findViewById(R.id.cat_title)).setText(categoryList.get(i).getTitle());
-						
-						row.addView(child, lineParams);
-						
-						if(i + 1 % NUM_COLUMN != 0){
-							View v = new View(context);
-							v.setBackgroundDrawable(context.getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
+					for(int i = 0; i < categoryList.size(); i++){
+						if(i % NUM_COLUMN == 0){
+							LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+							rowParams.weight = 1F;
 							
-							LinearLayout.LayoutParams vDividerParams = new LinearLayout.LayoutParams(1, LinearLayout.LayoutParams.MATCH_PARENT);
-							row.addView(v, vDividerParams);
+							LinearLayout tRow = new LinearLayout(context);
+							tRow.setOrientation(LinearLayout.HORIZONTAL);
+							
+							View h = new View(context);
+							h.setBackgroundDrawable(context.getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
+							
+							LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
+							
+							((ViewGroup) convertView.findViewById(R.id.category_section)).addView(h, dividerParams);
+							((ViewGroup) convertView.findViewById(R.id.category_section)).addView(tRow, rowParams);
+							
+							row = tRow;
+						}
+						
+						if(row != null){
+							LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+							lineParams.weight = 1F;
+							
+							View child = inflater.inflate(R.layout.item_listview_tab_forum_category_single, null, false);
+							final int ii = i;
+							child.setOnClickListener(new OnClickListener(){
+								@Override
+								public void onClick(View v){
+									FragmentUtil.startImageMappingFragment(context, categoryList.get(ii));
+								}
+							});
+							
+							NetworkHandler.getInstance(context).imageRequest(categoryList.get(i).getImageLink(), (ImageView) child.findViewById(R.id.cat_thumb));
+							((TextView) child.findViewById(R.id.cat_title)).setText(categoryList.get(i).getTitle());
+							
+							row.addView(child, lineParams);
+							
+							if(i + 1 % NUM_COLUMN != 0){
+								View v = new View(context);
+								v.setBackgroundDrawable(context.getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
+								
+								LinearLayout.LayoutParams vDividerParams = new LinearLayout.LayoutParams(1, LinearLayout.LayoutParams.MATCH_PARENT);
+								row.addView(v, vDividerParams);
+							}
 						}
 					}
+					
+					View h = new View(context);
+					h.setBackgroundDrawable(context.getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
+					
+					LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
+					
+					((ViewGroup) convertView.findViewById(R.id.category_section)).addView(h, dividerParams);
 				}
-				
-				View h = new View(context);
-				h.setBackgroundDrawable(context.getResources().getDrawable(android.R.drawable.divider_horizontal_textfield));
-				
-				LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
-				
-				((ViewGroup) convertView.findViewById(R.id.category_section)).addView(h, dividerParams);
 			}
+			
+			
 			break;
 		case 1:
 			if(convertView == null){

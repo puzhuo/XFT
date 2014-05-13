@@ -28,7 +28,7 @@ public class ItemDetailEntity extends BaseEntity{
 	@SerializedName("goods_name")
 	private String name;
 	@Expose
-	@SerializedName("description")
+	@SerializedName("goods_desc")
 	private String description;
 	@Expose
 	@SerializedName("goods_thumb")
@@ -68,30 +68,52 @@ public class ItemDetailEntity extends BaseEntity{
 	@Expose
 	@SerializedName("promote_price")
 	private float promotePrice;
+	@Expose
+	@SerializedName("sold_num")
+	private int soldCount = -1;
 	
+	public int getSoldCount() {
+		return soldCount;
+	}
+
+	public void setSoldCount(int soldCount) {
+		this.soldCount = soldCount;
+	}
+
 	@Expose
 	@SerializedName("add_time")
 	private String addedTime;
 	
-	//temp
+	//for cart
 	@Expose
-	@SerializedName("goods_thumb_api")
-	private String thumbTemp;
+	@SerializedName("goods_number")
+	private int purchaseCount;
+	@Expose
+	@SerializedName("rec_id")
+	private int cartId;
+	
+	public int getPurchaseCount(){
+		return purchaseCount;
+	}
+	
+	public void setPurchaseCount(int purchaseCount){
+		this.purchaseCount = purchaseCount;
+	}
+	
+	public int getCartId(){
+		return cartId;
+	}
+	
+	public void setCartId(int cartId){
+		this.cartId = cartId;
+	}
 	
 	public ImageMap getItemMap(){
-		return new ImageMap().setLinkType(ImageMap.LINK_GOOD_DETAIL).setLink(id).setTitle(name);
+		return new ImageMap().setLinkType(ImageMap.LINK_GOOD_DETAIL).setLink(id).setTitle(name).setImageLink(thumb);
 	}
 	
 	public ImageMap getDescMap(){
-		return new ImageMap().setLinkType(ImageMap.LINK_GOOD_DESC).setLink(description).setTitle(name);
-	}
-	
-	public String getThumbTemp(){
-		return thumbTemp;
-	}
-	
-	public void setThumbTemp(String thumbTemp){
-		this.thumbTemp = thumbTemp;
+		return new ImageMap().setLinkType(ImageMap.LINK_GOOD_DESC).setLink(description).setTitle(name).setImageLink(thumb);
 	}
 
 	public String getId() {

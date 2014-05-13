@@ -54,6 +54,11 @@ public class TabCategoryFragment extends RefreshableListViewFragment {
 	}
 	
 	@Override
+	protected String getTitleUpperText(){
+		return null;
+	}
+	
+	@Override
 	protected void onClick(int id){
 		switch(id){
 		case MODE_TITLE:

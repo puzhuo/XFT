@@ -6,7 +6,6 @@ import java.util.List;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -15,19 +14,21 @@ import android.widget.GridView;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.Listener;
 import com.pz.xingfutao.R;
-import com.pz.xingfutao.adapter.SearchResultAdapter;
+import com.pz.xingfutao.adapter.ItemListAdapter;
 import com.pz.xingfutao.api.ContentApi;
 import com.pz.xingfutao.api.SearchApi;
 import com.pz.xingfutao.entities.ItemDetailEntity;
 import com.pz.xingfutao.net.NetworkHandler;
 import com.pz.xingfutao.ui.base.BaseBackButtonFragment;
 import com.pz.xingfutao.utils.FragmentUtil;
+import com.pz.xingfutao.utils.PLog;
+import com.pz.xingfutao.utils.Renderer;
 
 public class ItemListFragment extends BaseBackButtonFragment{
 	
 	private GridView list;
 	private List<ItemDetailEntity> datas;
-	private SearchResultAdapter adapter;
+	private ItemListAdapter adapter;
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState){
@@ -39,7 +40,7 @@ public class ItemListFragment extends BaseBackButtonFragment{
 		
 		datas = new ArrayList<ItemDetailEntity>();
 		
-		adapter = new SearchResultAdapter(getActivity(), datas);
+		adapter = new ItemListAdapter(getActivity(), datas);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new OnItemClickListener(){
 			@Override
@@ -48,7 +49,7 @@ public class ItemListFragment extends BaseBackButtonFragment{
 			}
 		});
 		
-		new ArgExec(this, "search_key", "item_list_api"){
+		new ArgExec(this, "search_key", "item_list_api", "url_list"){
 
 			@Override
 			protected void set(int i, Object value) {
@@ -57,8 +58,12 @@ public class ItemListFragment extends BaseBackButtonFragment{
 					NetworkHandler.getInstance(getActivity()).jsonRequest(Method.POST, SearchApi.getSearchUrl((String) value), new Listener<JSONObject>(){
 						@Override
 						public void onResponse(JSONObject jsonObject){
+							PLog.d("json", jsonObject.toString());
 							datas.clear();
 							datas.addAll(SearchApi.parseSearchResult(jsonObject));
+							
+							if(datas.size() % 2 != 0) datas.add(new ItemDetailEntity());
+							
 							adapter.notifyDataSetChanged();
 						}
 					}, ItemListFragment.this);
@@ -72,6 +77,17 @@ public class ItemListFragment extends BaseBackButtonFragment{
 							adapter.notifyDataSetChanged();
 						}
 					}, ItemListFragment.this);
+					break;
+				case 2:
+					NetworkHandler.getInstance(getActivity()).stringRequest(Method.POST, ContentApi.getRecommendGoodListUrl((String) value), new Listener<String>(){
+						@Override
+						public void onResponse(String response){
+							datas.clear();
+							datas.addAll(ContentApi.parseMainCategoryDetail(response));
+							adapter.notifyDataSetChanged();
+						}
+					}, ItemListFragment.this);
+					 
 					break;
 				}
 			}

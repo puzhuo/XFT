@@ -76,7 +76,7 @@
             android:textSize="13sp"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:imeOptions="actionGo"
+            android:imeOptions="actionSend"
             android:gravity="center|left"
             android:background="@null" />
             

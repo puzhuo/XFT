@@ -5,10 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.pz.xingfutao.entities.ImageMap;
 import com.pz.xingfutao.net.NetworkHandler;
+import com.pz.xingfutao.utils.FragmentUtil;
 
 public class FitWidthImageView extends ImageView {
 	
@@ -60,9 +62,10 @@ public class FitWidthImageView extends ImageView {
 		super.setImageResource(resourceId);
 		
 		Drawable d = this.getDrawable();
-		intrinsicWidth = d.getIntrinsicWidth();
-		intrinsicHeight = d.getIntrinsicHeight();
+		
 		if(d != null){
+			intrinsicWidth = d.getIntrinsicWidth();
+			intrinsicHeight = d.getIntrinsicHeight();
 			scaleToFit();
 		}
 	}
@@ -77,9 +80,14 @@ public class FitWidthImageView extends ImageView {
 		}
 	}
 	
-	public void setNetworkImage(ImageMap image){
+	public void setNetworkImage(final ImageMap image){
 		NetworkHandler.getInstance(getContext()).imageRequest(image.getImageLink(), this);
-		
+		this.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v){
+				FragmentUtil.startImageMappingFragment(getContext(), image);
+			}
+		});
 	}
 	
 	public float getScaleRate(){

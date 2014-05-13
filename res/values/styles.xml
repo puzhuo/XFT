@@ -16,5 +16,10 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="PopupWindowSlideFade" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_fade_slide_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_fade_slide_bottom_out</item>
+    </style>
 
 </resources>

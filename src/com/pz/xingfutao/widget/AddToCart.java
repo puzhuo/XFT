@@ -35,11 +35,11 @@ public class AddToCart {
 			int width = p.width;
 			int height = p.height;
 			
-			if(Math.abs(x - toX) > 1 || Math.abs(y - toY) > 1){
-				x += (toX - x) * 0.2F;
-				y += (toY - y) * 0.1F;
-				width += (toWidth - width) * 0.4F;
-				height += (toHeight - height) * 0.4F;
+			if(Math.abs(x - toX) > 1 || Math.abs(y - toY) > SystemMeasurementUtil.getStatusBarHeight(null) + 10){
+				x += (toX - x) * 0.15F;
+				y += (toY - y) * 0.07F;
+				width += (toWidth - width) * 0.2F;
+				height += (toHeight - height) * 0.2F;
 				
 				p.x = x;
 				p.y = y;
@@ -68,21 +68,35 @@ public class AddToCart {
 		this(from, to);
 		
         this.imageResourceId = imageResourceId;
-        
-        toX = to.getLeft();
-        toY = to.getTop() + SystemMeasurementUtil.getStatusBarHeight(from.getContext());
-        toWidth = to.getWidth();
-        toHeight = to.getHeight();
 		
 		windowManager = (WindowManager) from.getContext().getSystemService(Context.WINDOW_SERVICE);
+	}
+	
+	public void setFrom(View from){
+		fromView = from;
+	}
+	
+	public void setTo(View to){
+		toView = to;
+		
+		toX = to.getLeft();
+        toY = to.getTop() + SystemMeasurementUtil.getStatusBarHeight(to.getContext());
+        toWidth = to.getWidth();
+        toHeight = to.getHeight();
 	}
 	
 	public void performAdd(){
 		
 		if(cart != null){
-			windowManager.removeView(cart);
+			if(handler != null) handler.removeCallbacks(runnable);
+			windowManager.removeViewImmediate(cart);
 			cart = null;
 		}
+		
+		toX = toView.getLeft();
+        toY = toView.getTop() + SystemMeasurementUtil.getStatusBarHeight(toView.getContext());
+        toWidth = toView.getWidth();
+        toHeight = toView.getHeight();
 		
 		WindowManager.LayoutParams params = new WindowManager.LayoutParams();
 		params.type = WindowManager.LayoutParams.TYPE_APPLICATION;
@@ -107,7 +121,6 @@ public class AddToCart {
 	public void onDestroy(){
 		if(cart != null){
 			if(handler != null) handler.removeCallbacks(runnable);
-			//windowManager.removeView(cart);
 			windowManager.removeViewImmediate(cart);
 			cart = null;
 			PLog.d("destroy", "done");

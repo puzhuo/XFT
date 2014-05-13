@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
+        android:background="@drawable/background_round_corner_white_bottom_cut"
+        android:orientation="vertical"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip" >
+
+        <TextView
+            android:id="@+id/desc_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="阿速度发送地方" />
+        
+        <TextView
+            android:id="@+id/extra_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="asdfasdfasdfasdf"
+            android:textSize="12sp" />
+        
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
+        android:background="#AAAAAA" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
+        android:orientation="horizontal">
+        
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fragment_tab_profile_service_call_confirm"
+            android:textSize="13sp"
+            android:textColor="@drawable/common_text_color"
+            android:background="@drawable/selector_round_corner_white_top_right_cut" />
+        
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#DDDDDD" />
+        
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fragment_tab_profile_common_cancel"
+            android:textSize="13sp"
+            android:textColor="@drawable/common_text_color"
+            android:background="@drawable/selector_round_corner_white_top_left_cut" />
+        
+    </LinearLayout>
+
+</LinearLayout>

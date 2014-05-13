@@ -29,10 +29,14 @@ public class TabStoreImageFlowAdapter extends PagerAdapter {
 		this.datas = datas;
 		viewContainer = new ArrayList<View>();
 	}
+	
+	public void setData(ImageFlowEntity datas){
+		this.datas = datas;
+	}
 
 	@Override
 	public int getCount() {
-		return datas.getImageUrls().length;
+		return datas.getImageMaps().length;
 	}
 
 	@Override
@@ -53,12 +57,12 @@ public class TabStoreImageFlowAdapter extends PagerAdapter {
 		View newInstance = LayoutInflater.from(context).inflate(R.layout.item_viewpager_tab_store_flow, null, false);
 		
 		FitWidthImageView imageView = (FitWidthImageView) newInstance.findViewById(R.id.image_view);
-		NetworkHandler.getInstance(context).imageRequest(datas.getImageUrls()[position].getImageLink(), imageView);
+		NetworkHandler.getInstance(context).imageRequest(datas.getImageMaps()[position].getImageLink(), imageView);
 		imageView.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v){
 				
-				FragmentUtil.startImageMappingFragment(context, datas.getImageUrls()[position]);
+				FragmentUtil.startImageMappingFragment(context, datas.getImageMaps()[position]);
 			}
 		});
 		

@@ -53,6 +53,11 @@ public abstract class RefreshableListViewFragment extends BaseTitleFragment{
 	}
 	 */
 	
+	@Override
+	protected String getTitleUpperText(){
+		return getString(R.string.refreshing);
+	}
+	
 	protected abstract void onRefresh();
 	
 	protected boolean pullable(){

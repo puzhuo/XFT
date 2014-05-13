@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <com.pz.xingfutao.widget.PullRefreshWidget
+        android:id="@+id/pull_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/settle">
+        
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:listSelector="#00000000" />
+        
+    </com.pz.xingfutao.widget.PullRefreshWidget>
+    
+    <RelativeLayout
+        android:id="@+id/settle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="#A0000000">
+        
+        <CheckBox
+            android:id="@+id/confirm"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:padding="5dip"
+            android:layout_centerVertical="true" />
+        
+        <TextView 
+            android:id="@+id/total_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/confirm"
+            android:textColor="#FFFFFF"
+            android:text="合计：" />
+        
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/total_title"
+            android:textStyle="bold"
+            android:textColor="#F05364" />
+        
+        <TextView
+            android:id="@+id/caution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/total_title"
+            android:layout_alignLeft="@+id/total_title"
+            android:textColor="#FFFFFF"
+            android:text="一起结算只算一次运费哦" />
+        
+        <TextView
+            android:id="@+id/settle_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="结算"
+            android:textSize="16sp"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:paddingTop="5dip"
+            android:paddingBottom="5dip"
+            android:textColor="#FFFFFF"
+            android:clickable="true"
+            android:background="@drawable/selector_round_corner_cart" />
+        
+        
+    </RelativeLayout>
+
+</RelativeLayout>

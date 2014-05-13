@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="5dip"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_round_corner_white"
+        android:padding="10dip" >
+
+        <ImageView
+            android:id="@+id/post_margin"
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:alpha="0.3"
+            android:background="@drawable/background_post_margin" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/post_sign"
+            android:layout_alignTop="@+id/post_sign"
+            android:gravity="center|left"
+            android:text="收货信息" />
+
+        <View
+            android:id="@+id/seperater"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_below="@+id/post_sign"
+            android:layout_marginTop="4dip"
+            android:background="@color/global_background_color" />
+
+        <TextView
+            android:id="@+id/consignee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seperater"
+            android:layout_marginTop="10dip"
+            android:text="7heaven"
+            android:textColor="#555555" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/consignee"
+            android:text="13448459495"
+            android:textColor="#555555" />
+        
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/number"
+            android:text="上海闵行区"
+            android:textColor="#555555" />
+       
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="15dip"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/address"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/consignee"
+            android:layout_marginRight="4dip"
+            android:src="@drawable/arrow_right" />
+
+        <ImageView
+            android:id="@+id/post_sign"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignRight="@+id/textView1"
+            android:layout_below="@+id/post_margin"
+            android:layout_marginTop="5dip"
+            android:src="@drawable/post_stamp" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:padding="10dip"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <TextView
+            android:id="@+id/pay_way"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付方式" />
+        
+        <ImageView
+            android:id="@+id/seperater"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="4dip"
+            android:layout_below="@+id/pay_way"
+            android:background="@color/global_background_color" />
+        
+        <TextView 
+            android:id="@+id/pay_on_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seperater"
+            android:layout_marginTop="10dip"
+            android:text="货到付款"
+            android:textSize="15sp"
+            android:textColor="#555555"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/pay_on_delivery"
+            android:layout_alignBottom="@+id/pay_on_delivery"
+            android:layout_toRightOf="@+id/pay_on_delivery"
+            android:layout_marginLeft="10dip"
+            android:gravity="center|left"
+            android:text="满198包邮"
+            android:textSize="12sp"
+            android:textColor="#555555" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:layout_marginTop="5dip"
+        android:background="@drawable/background_round_corner_white_bottom_cut" >
+        
+        <TextView
+            android:id="@+id/detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单详情" />
+        
+        <ImageView
+            android:id="@+id/seperater"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="4dip"
+            android:layout_below="@+id/detail_title"
+            android:background="@color/global_background_color" />
+        
+    </RelativeLayout>
+    
+</LinearLayout>

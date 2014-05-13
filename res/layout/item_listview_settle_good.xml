@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:padding="10dip" >
+
+        <ImageView
+            android:id="@+id/thumb"
+            android:layout_width="60dip"
+            android:layout_height="60dip"
+            android:src="@drawable/test" />
+        
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/thumb"
+            android:layout_marginLeft="5dip"
+            android:maxLines="2"
+            android:text="阿发生的发生都发生的发违法违法"/>
+        
+        <TextView
+            android:id="@+id/count_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/thumb"
+            android:layout_toRightOf="@+id/thumb"
+            android:layout_marginLeft="5dip"
+            android:text="数量：" />
+        
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/count_title"
+            android:layout_alignTop="@+id/count_title"
+            android:text="2" />
+        
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/thumb"
+            android:text="¥9.0" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/price"
+            android:layout_alignTop="@+id/price"
+            android:text="小计：" />
+        
+    </RelativeLayout>
+    
+    <View
+        android:id="@+id/seperated"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@color/global_background_color" />
+
+</LinearLayout>

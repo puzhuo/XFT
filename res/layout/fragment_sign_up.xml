@@ -7,51 +7,80 @@
     android:background="@color/global_background_color" >
     
     <LinearLayout
+        android:id="@+id/account_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/background_round_corner_white_shadow">
-        
-        <TextView
-            android:id="@+id/alias"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/activity_signup_desc_alias" />
-        
-        <EditText
-            android:id="@+id/alias_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:imeActionId="@+id/account_input"
-            android:singleLine="true"
-            android:background="@null" />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dip"
-        android:background="@drawable/background_round_corner_white_shadow">
+        android:orientation="horizontal"
+        android:background="@drawable/background_round_corner_white_shadow" >
         
-        <TextView
+        <ImageView
+            android:id="@+id/account_icon"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:layout_marginRight="5dip"
+            android:src="@drawable/icon_login_avator" />
+        
+        <TextView 
             android:id="@+id/account_desc"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="5dip"
             android:gravity="center"
-            android:text="@string/activity_signup_desc_account" />
+            android:text="@string/activity_login_desc_account"/>
         
         <EditText
             android:id="@+id/account_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="13sp"
+            android:singleLine="true"
             android:imeOptions="actionNext"
             android:imeActionId="@+id/password_input"
+            android:gravity="center|left"
+            android:background="@null" />
+            
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/password_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:orientation="horizontal"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <ImageView
+            android:id="@+id/password_icon"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:layout_marginRight="5dip"
+            android:src="@drawable/icon_password_key" />
+        
+        <TextView
+            android:id="@+id/password_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dip"
+            android:gravity="center"
+            android:text="@string/activity_login_desc_password" />
+        
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="13sp"
+            android:inputType="textPassword"
             android:singleLine="true"
-            android:background="@null"/>
+            android:imeOptions="actionNext"
+            android:imeActionId="@+id/password_confirm_input"
+            android:gravity="center|left"
+            android:background="@null" />
+            
         
     </LinearLayout>
     
@@ -59,23 +88,111 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="5dip"
         android:background="@drawable/background_round_corner_white_shadow">
         
+        <ImageView
+            android:id="@+id/password_icon"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:layout_marginRight="5dip"
+            android:src="@drawable/icon_password_key" />
+        
         <TextView
-            android:id="@+id/password_desc"
+            android:id="@+id/password_confirm_desc"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="5dip"
             android:gravity="center"
-            android:text="@string/activity_signup_desc_password" />
+            android:text="@string/activity_signup_desc_password_confirm" />
         
         <EditText
-            android:id="@+id/password_input"
+            android:id="@+id/password_confirm_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:inputType="textPassword"
-            android:imeOptions="actionGo"
+            android:imeOptions="actionNext"
+            android:imeActionId="@+id/email_input"
             android:singleLine="true"
+            android:gravity="center|left"
+            android:textSize="13sp"
+            android:background="@null" />
+            
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dip"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:layout_marginRight="5dip"
+            android:src="@drawable/icon_email" />
+        
+        <TextView
+            android:id="@+id/email_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dip"
+            android:gravity="center"
+            android:text="@string/activity_signup_desc_email" />
+        
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:imeActionId="@+id/phone_input"
+            android:singleLine="true"
+            android:gravity="center|left"
+            android:textSize="13sp"
+            android:background="@null" />
+            
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dip"
+        android:background="@drawable/background_round_corner_white_shadow">
+        
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:layout_marginRight="5dip"
+            android:src="@drawable/icon_phone" />
+        
+        <TextView
+            android:id="@+id/phone_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dip"
+            android:gravity="center"
+            android:text="@string/activity_signup_desc_phone" />
+        
+        <EditText
+            android:id="@+id/phone_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="phone"
+            android:imeOptions="actionSend"
+            android:singleLine="true"
+            android:gravity="center|left"
+            android:textSize="13sp"
             android:background="@null" />
             
     </LinearLayout>

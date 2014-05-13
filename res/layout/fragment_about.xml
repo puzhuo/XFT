@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:layout_toRightOf="@+id/icon"
+        android:text="ver 4.0.7.0" />
+    
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_below="@+id/version"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_logo" />
+    
+    <ImageView 
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_marginTop="5dip"
+        android:layout_alignLeft="@+id/icon"
+        android:layout_alignRight="@+id/icon"
+        android:src="@drawable/splash_co"/>
+    
+    <TextView
+        android:id="@+id/co"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dip"
+        android:gravity="center"
+        android:text="上海卓航网络科技有限公司" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/co"
+        android:layout_marginBottom="5dip"
+        android:gravity="center"
+        android:text="Copyright©2014 幸福淘 版权所有" />
+    
+</RelativeLayout>
